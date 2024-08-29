@@ -1,7 +1,3 @@
-Cyclistic google analytics case study - 
-
-ASK
-- How do annual members and casual riders use the bike sharing service differently?
 
 Once data gets imported to the appropriate format (sheets, Rstudio, or SQL), 
 - what insights can be gathered with just the available data? 
@@ -9,15 +5,11 @@ Once data gets imported to the appropriate format (sheets, Rstudio, or SQL),
     - 'trip duration' can be calculated from the start and end times
     - 'weekday' can be calculated from either start or end time
 
-
-
-Preparing the data - 
-
-Data is located on my google drive
-
-Data is organized into folders -
-    - One has raw csv data
-    - One has cleaned csv data
+Insights to determine - 
+    - What are the top arrival and destination points for casuals / members? Where do these locations sit geographically in Chicago? 
+    - What is the difference in time usage over the year between casuals and members? 
+    - How many total rides are logged throughout the year for members and casuals? 
+    - 
 
 There are a few considerations into credibility with this data - 
     - Some trips have a negative time delta. These entries are omitted.
