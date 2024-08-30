@@ -46,7 +46,7 @@ FROM 'cyclistic_case_study.raw_combined_data';
 
 -- add column for time delta, day of week, and month
 
-CREATE TABLE cyclistic_case_study.raw_data_added_columns AS
+CREATE TABLE cyclistic_case_study.raw_combined_data_added_columns AS
 (
     SELECT
         ride_id,
