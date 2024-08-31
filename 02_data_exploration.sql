@@ -8,8 +8,13 @@ FROM `cyclistic_case_study.raw_combined_data_added_columns`
 
 GROUP BY member_casual
 
-
 -- check for null values
+
+
+
+
+
+
 
 
 -- check for duplicate trip IDs
