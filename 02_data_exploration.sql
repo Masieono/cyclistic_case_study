@@ -10,15 +10,74 @@ GROUP BY member_casual
 
 -- check for null values
 
+SELECT 
+  COUNTIF(ride_id IS NULL) AS ride_id,
+  COUNTIF(rideable_type IS NULL) AS rideable_type,
+  COUNTIF(started_at IS NULL) AS started_at,
+  COUNTIF(ended_at IS NULL) AS ended_at,
+  COUNTIF(start_station_name IS NULL) AS start_station_name,
+  COUNTIF(start_station_id IS NULL) AS start_station_id,
+  COUNTIF(end_station_name IS NULL) AS end_station_name,
+  COUNTIF(end_station_id IS NULL) AS end_station_id,
+  COUNTIF(start_lat IS NULL) AS start_lat,
+  COUNTIF(start_lng IS NULL) AS start_lng,
+  COUNTIF(end_lat IS NULL) AS end_lat,
+  COUNTIF(end_lng IS NULL) AS end_lng,
+  COUNTIF(member_casual IS NULL) AS member_casual,
+  COUNTIF(trip_duration IS NULL) AS trip_duration,
+  COUNTIF(trip_month IS NULL) AS trip_month,
+  COUNTIF(day_of_week IS NULL) AS day_of_week
+ 
+FROM `cyclistic_case_study.raw_combined_data_added_columns`
 
+-- total unique columns with nulls
 
+SELECT COUNT(*)
 
+FROM `cyclistic_case_study.raw_combined_data_added_columns`
 
-
-
+WHERE 
+  start_station_name IS NULL OR
+  start_station_id IS NULL OR
+  end_station_name IS NULL OR
+  end_station_id IS NULL OR
+  end_lat IS NULL OR
+  end_lng IS NULL
 
 -- check for duplicate trip IDs
 
+SELECT 
+  COUNT(*) AS total_trip_ids,
+  COUNT(DISTINCT ride_id) AS unique_trip_ids,
+  COUNT(*) - COUNT(DISTINCT ride_id) AS number_of_duplicate_ride_ids
+
+FROM `cyclistic_case_study.raw_combined_data_added_columns`
+
+-- view if these duplicate ride IDs are truly duplicate entries
+
+SELECT *
+FROM 
+  (
+    SELECT *,
+    COUNT(1) OVER(PARTITION BY ride_id) duplicate_count
+    FROM `cyclistic_case_study.raw_combined_data_added_columns` 
+  )
+
+WHERE duplicate_count > 1
+
 -- check for all types of rideable_type
 
+SELECT 
+  rideable_type,
+  COUNT(rideable_type) AS number_of_rides
+
+FROM `cyclistic_case_study.raw_combined_data_added_columns`
+
+GROUP BY rideable_type
+
 -- list all start and end destinations (looking for any that weren't real or testing facility)
+
+
+
+
+
