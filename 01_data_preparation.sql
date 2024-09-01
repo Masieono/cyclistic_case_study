@@ -1,6 +1,6 @@
 -- Combining all tables into one
 
-CREATE TABLE cyclistic_case_study.raw_combined_data AS
+CREATE TABLE cyclistic_case_study.raw_data AS
 (
     SELECT * FROM 'cyclistic_case_study.01_2021'
     UNION ALL
@@ -42,11 +42,11 @@ CREATE TABLE cyclistic_case_study.raw_combined_data AS
 
 SELECT COUNT (*)
 
-FROM 'cyclistic_case_study.raw_combined_data';
+FROM `cyclistic_case_study.raw_data`;
 
 -- add column for time delta, day of week, and month
 
-CREATE TABLE cyclistic_case_study.raw_combined_data_added_columns AS
+CREATE TABLE cyclistic_case_study.raw_data_added_columns AS
 (
     SELECT
         ride_id,
@@ -66,12 +66,12 @@ CREATE TABLE cyclistic_case_study.raw_combined_data_added_columns AS
         CAST(EXTRACT(MONTH from started_at) AS STRING) AS trip_month,
         CAST(EXTRACT(DAYOFWEEK from started_at) AS STRING) AS day_of_week
 
-    FROM 'cyclistic_case_study.raw_combined_data';
+    FROM `cyclistic_case_study.raw_data`;
 )
 
 -- convert month from a number to a string
 
-UPDATE `cyclistic_case_study.raw_combined_data_added_columns`
+UPDATE `cyclistic_case_study.raw_data_added_columns`
 
 SET trip_month = 
     CASE
@@ -93,7 +93,7 @@ WHERE day_of_week IN ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '
 
 -- convert day_of_week from a number to a string
 
-UPDATE `cyclistic_case_study.raw_combined_data_added_columns`
+UPDATE `cyclistic_case_study.raw_data_added_columns`
 
 SET day_of_week = 
     CASE
