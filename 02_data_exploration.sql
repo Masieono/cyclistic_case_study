@@ -75,9 +75,39 @@ FROM `cyclistic_case_study.raw_combined_data_added_columns`
 
 GROUP BY rideable_type
 
--- list all start and end destinations (looking for any that weren't real or testing facility)
+-- check for all types of member_casual
 
+SELECT 
+  member_casual,
+  COUNT(member_casual) AS number_of_rides
 
+FROM `cyclistic_case_study.raw_combined_data_added_columns`
 
+GROUP BY member_casual
 
+-- test to see if there are any testing facilities as start or end points
 
+SELECT *
+
+FROM `cyclistic_case_study.raw_combined_data_added_columns`
+
+WHERE 
+  start_station_name LIKE '%Warehouse%' OR
+  start_station_name LIKE '%TEST%' OR
+  start_station_name LIKE '%DIVVY%' OR
+  start_station_name LIKE '%REPAIR%' OR
+
+  start_station_id LIKE '%Warehouse%' OR
+  start_station_id LIKE '%TEST%' OR
+  start_station_id LIKE '%DIVVY%' OR
+  start_station_id LIKE '%REPAIR%' OR
+
+  end_station_name LIKE '%Warehouse%' OR
+  end_station_name LIKE '%TEST%' OR
+  end_station_name LIKE 'DIVVY%' OR
+  end_station_name LIKE 'REPAIR%' OR
+
+  end_station_id LIKE '%Warehouse%' OR
+  end_station_id LIKE '%TEST%' OR
+  end_station_id LIKE '%DIVVY%' OR
+  end_station_id LIKE '%REPAIR%'
