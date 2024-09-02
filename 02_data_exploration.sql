@@ -4,7 +4,7 @@ SELECT
     member_casual,
     MIN(trip_duration) AS shortest_trip,
     MAX(trip_duration) AS longest_trip,
-FROM `cyclistic_case_study.raw_combined_data_added_columns`
+FROM `cyclistic_case_study.raw_data_added_columns`
 
 GROUP BY member_casual
 
@@ -28,13 +28,13 @@ SELECT
   COUNTIF(trip_month IS NULL) AS trip_month,
   COUNTIF(day_of_week IS NULL) AS day_of_week
  
-FROM `cyclistic_case_study.raw_combined_data_added_columns`
+FROM `cyclistic_case_study.raw_data_added_columns`
 
 -- total unique columns with nulls
 
 SELECT COUNT(*)
 
-FROM `cyclistic_case_study.raw_combined_data_added_columns`
+FROM `cyclistic_case_study.raw_data_added_columns`
 
 WHERE 
   start_station_name IS NULL OR
@@ -51,7 +51,7 @@ SELECT
   COUNT(DISTINCT ride_id) AS unique_trip_ids,
   COUNT(*) - COUNT(DISTINCT ride_id) AS number_of_duplicate_ride_ids
 
-FROM `cyclistic_case_study.raw_combined_data_added_columns`
+FROM `cyclistic_case_study.raw_data_added_columns`
 
 -- view if these duplicate ride IDs are truly duplicate entries
 
@@ -60,7 +60,7 @@ FROM
   (
     SELECT *,
     COUNT(1) OVER(PARTITION BY ride_id) duplicate_count
-    FROM `cyclistic_case_study.raw_combined_data_added_columns` 
+    FROM `cyclistic_case_study.raw_data_added_columns` 
   )
 
 WHERE duplicate_count > 1
@@ -71,7 +71,7 @@ SELECT
   rideable_type,
   COUNT(rideable_type) AS number_of_rides
 
-FROM `cyclistic_case_study.raw_combined_data_added_columns`
+FROM `cyclistic_case_study.raw_data_added_columns`
 
 GROUP BY rideable_type
 
@@ -81,7 +81,7 @@ SELECT
   member_casual,
   COUNT(member_casual) AS number_of_rides
 
-FROM `cyclistic_case_study.raw_combined_data_added_columns`
+FROM `cyclistic_case_study.raw_data_added_columns`
 
 GROUP BY member_casual
 
@@ -89,7 +89,7 @@ GROUP BY member_casual
 
 SELECT *
 
-FROM `cyclistic_case_study.raw_combined_data_added_columns`
+FROM `cyclistic_case_study.raw_data_added_columns`
 
 WHERE 
   start_station_name LIKE '%Warehouse%' OR
