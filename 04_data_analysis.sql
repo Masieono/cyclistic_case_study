@@ -8,7 +8,7 @@ SELECT
   
 FROM `cyclistic_case_study.cleaned_data`
 
-GROUP BY trip_month
+GROUP BY trip_month;
 
 -- total number of rides by day of week for casuals and members
   
@@ -20,7 +20,7 @@ SELECT
   
 FROM `cyclistic_case_study.cleaned_data`
 
-GROUP BY day_of_week
+GROUP BY day_of_week;
   
 -- top 10 start locations for casuals
 
@@ -35,7 +35,7 @@ FROM `cyclistic_case_study.cleaned_data`
 GROUP BY start_station_name, start_lat, start_lng
 ORDER BY number_casual_departures DESC
 
-LIMIT 10
+LIMIT 10;
 
 -- top 10 end locations for casuals
 
@@ -50,7 +50,7 @@ FROM `cyclistic_case_study.cleaned_data`
 GROUP BY end_station_name, end_lat, end_lng
 ORDER BY number_casual_arrivals DESC
 
-LIMIT 10
+LIMIT 10;
 
 -- top 10 start locations for members
 
@@ -65,7 +65,7 @@ FROM `cyclistic_case_study.cleaned_data`
 GROUP BY start_station_name, start_lat, start_lng
 ORDER BY number_member_departures DESC
 
-LIMIT 10
+LIMIT 10;
 
 -- top 10 end locations for members
 
@@ -80,7 +80,7 @@ FROM `cyclistic_case_study.cleaned_data`
 GROUP BY end_station_name, end_lat, end_lng
 ORDER BY number_member_arrivals DESC
 
-LIMIT 10
+LIMIT 10;
 
 -- trip_duration by month for casuals and members
 
@@ -91,7 +91,7 @@ SELECT
 
 FROM `cyclistic_case_study.cleaned_data`
 
-GROUP BY trip_month
+GROUP BY trip_month;
 
 -- trip_duration by day of week for casuals and members
 
@@ -103,7 +103,7 @@ SELECT
     AS avg_member_trip_duration
 FROM `cyclistic_case_study.cleaned_data`
 
-GROUP BY day_of_week
+GROUP BY day_of_week;
   
 -- breakdown of rideable_type
 
@@ -115,7 +115,7 @@ SELECT
   
 FROM `cyclistic_case_study.cleaned_data`
 
-GROUP BY rideable_type
+GROUP BY rideable_type;
 
 -- number of trips by day of the week, with percentage breakdown
 
@@ -144,9 +144,10 @@ SELECT
   number_member_rides,
   ROUND((daily_trips.number_member_rides / total_trips.total_member_trips) * 100, 2) AS percentage_member_rides
 
-FROM total_trips, daily_trips
+FROM total_trips, daily_trips;
 
 -- what times do casuals and members generally start their trips?
+
 SELECT  
   EXTRACT(HOUR FROM started_at) AS start_time,
   COUNT(*) AS total_trips,
@@ -157,4 +158,4 @@ FROM `cyclistic_case_study.cleaned_data`
 
 GROUP BY start_time
   
-ORDER BY start_time ASC
+ORDER BY start_time ASC;

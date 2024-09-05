@@ -6,7 +6,7 @@ SELECT
     MAX(trip_duration) AS longest_trip,
 FROM `cyclistic_case_study.raw_data_added_columns`
 
-GROUP BY member_casual
+GROUP BY member_casual;
 
 -- check for null values
 
@@ -28,7 +28,7 @@ SELECT
   COUNTIF(trip_month IS NULL) AS trip_month,
   COUNTIF(day_of_week IS NULL) AS day_of_week
  
-FROM `cyclistic_case_study.raw_data_added_columns`
+FROM `cyclistic_case_study.raw_data_added_columns`;
 
 -- total unique columns with nulls
 
@@ -42,7 +42,7 @@ WHERE
   end_station_name IS NULL OR
   end_station_id IS NULL OR
   end_lat IS NULL OR
-  end_lng IS NULL
+  end_lng IS NULL;
 
 -- check for duplicate trip IDs
 
@@ -51,7 +51,7 @@ SELECT
   COUNT(DISTINCT ride_id) AS unique_trip_ids,
   COUNT(*) - COUNT(DISTINCT ride_id) AS number_of_duplicate_ride_ids
 
-FROM `cyclistic_case_study.raw_data_added_columns`
+FROM `cyclistic_case_study.raw_data_added_columns`;
 
 -- view if these duplicate ride IDs are truly duplicate entries
 
@@ -63,7 +63,7 @@ FROM
     FROM `cyclistic_case_study.raw_data_added_columns` 
   )
 
-WHERE duplicate_count > 1
+WHERE duplicate_count > 1;
 
 -- check for all types of rideable_type
 
@@ -73,7 +73,7 @@ SELECT
 
 FROM `cyclistic_case_study.raw_data_added_columns`
 
-GROUP BY rideable_type
+GROUP BY rideable_type;
 
 -- check for all types of member_casual
 
@@ -83,9 +83,9 @@ SELECT
 
 FROM `cyclistic_case_study.raw_data_added_columns`
 
-GROUP BY member_casual
+GROUP BY member_casual;
 
--- test to see if there are any testing facilities as start or end points
+-- see if there are any testing facilities as start or end points
 
 SELECT *
 
@@ -110,4 +110,4 @@ WHERE
   end_station_id LIKE '%Warehouse%' OR
   end_station_id LIKE '%TEST%' OR
   end_station_id LIKE '%DIVVY%' OR
-  end_station_id LIKE '%REPAIR%'
+  end_station_id LIKE '%REPAIR%';
