@@ -110,6 +110,19 @@ There were a few metrics I wanted to make sure to explore -
 To better illustrate these questions, I used Tableau to create visualizations of the cleaned data. A few of the visualizations are copied here, but you can find the full showcase on my [Tableau Dashboard](https://public.tableau.com/app/profile/mason.voskamp/viz/CyclisticCaseStudy_17253054375820/RidesBreakdown).
 
 
+<img width="831" alt="Screenshot 2024-09-09 at 11 36 30 AM" src="https://github.com/user-attachments/assets/fb5c2fe9-f510-47ff-9607-c1c21d317d3e">
+
+Only casual riders choose the docked bike type.
+
+<img width="928" alt="Screenshot 2024-09-09 at 11 38 47 AM" src="https://github.com/user-attachments/assets/c44fe06e-aefa-4ffa-8caf-bd2c224ce171">
+
+Casuals prefer to ride in the evenings. Members tend to ride during rush-hours.
+
+<img width="928" alt="Screenshot 2024-09-09 at 11 37 39 AM" src="https://github.com/user-attachments/assets/0f8fa61c-0d8a-441e-a96c-dd10772d5d31">
+
+Casual riders consistently take longer trips on average.
+
+
 
 ---
 ### Conclusions
